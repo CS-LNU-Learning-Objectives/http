@@ -41,6 +41,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <!-- Start -->
+            <section>
             <section class="center" data-state="lnu-intro">
                 <h3>HTTP- HyperText Transfer Protocol</h3>
                 <h3>Learning Object</h3>
@@ -74,149 +75,200 @@
                 <p>
                     At all times you must give credit to: ”Linnaeus university” with the link <a style="color: #333" href="https://webbprogrammerare.se">https://webbprogrammerare.se</a> and to the Creative Common-license above.
                 </p>
-                <pre><code></code></pre> <!-- Fix for color coding in md -->
+
+            </section>
+          </section>
+            <!-- Course management -->
+
+
+
+
+          <section>
+            <section data-markdown>
+              <script type="text/template">
+                <!-- .slide: class="center noborderimages" -->
+                ![CERN](https://farm6.staticflickr.com/5226/5679904557_e3c1f784ce_b.jpg)
+                <p class="cc">CC Image: https://www.flickr.com/photos/arselectronica</p>
+              </script>
             </section>
 
-            <!-- Course management -->
-          <section data-markdown>
-            <script type="text/template">
-              <!-- .slide: class="center noborderimages" -->
-              ![CERN](https://farm6.staticflickr.com/5226/5679904557_e3c1f784ce_b.jpg)
-              <p class="cc">CC Image: https://www.flickr.com/photos/arselectronica</p>
-            </script>
+            <section>
+              <h3>Tim Berners-Lee</h3>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Sir_Tim_Berners-Lee.jpg" alt="">
+              <p class="cc">Paul Clarke [CC BY-SA 4.0 (http://creativecommons.org/licenses/by-sa/4.0)], via Wikimedia Commons</p>
+            </section>
+
+
+
+            <section data-markdown>
+              <script type="text/template">
+                <!-- .slide: class="center noborderimages" -->
+                ![CERN](http://info.cern.ch/images/proposal.gif)
+                <p class="cc">Image from: http://info.cern.ch/Proposal.html</p>
+              </script>
+            </section>
+
+            <section>
+                <p class="center">
+                  <img  src="http://orion.lnu.se/pub/education/course/1DV449/ht15/sessions/images/http_url_html.png" alt="" width="70%">
+                </p>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                <img src="./images/web1.png" width="90%" alt="">
+              </script>
+            </section>
+
+            <section class="center">
+              <h3>CERN httpd</h3>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/First_Web_Server.jpg" width="80%" alt="">
+              <p class="cc"><a title="Coolcaesar at the English language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AFirst_Web_Server.jpg"></a></p>
+            </section>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-              <img src="./images/web1.png" width="90%" alt="">
-            </script>
-          </section>
 
+        <section>
+            <section data-markdown>
+              <script type="text/template">
+                <!-- .slide: class="center noborderimages" -->
+                # TCP/IP
+                The web is an application running on the Internet <br />
+                HTTP is an application protocol running on the TCP/IP stack
 
-          <section data-markdown>
-            <script type="text/template">
-              <!-- .slide: class="center noborderimages" -->
-              ![CERN](http://info.cern.ch/images/proposal.gif)
-              <p class="cc">Image from: http://info.cern.ch/Proposal.html</p>
-            </script>
-          </section>
+                <img src="./images/TCP_IP.png" width="60%" alt="">
 
-          <section data-markdown>
-            <script type="text/template">
-              <!-- .slide: class="center noborderimages" -->
+              </script>
+            </section>
 
-              ![U](http://orion.lnu.se/pub/education/course/1DV449/ht15/sessions/images/http_url_html.png)
+            <section data-markdown>
+              <script type="text/template">
+                ## High tech web apps at this time...
+                <img src="./images/web1.png" width="90%" alt="">
+              </script>
+            </section>
 
-            </script>
-          </section>
+            <section data-markdown>
 
-          <section data-markdown>
-            <script type="text/template">
-              <!-- .slide: class="center noborderimages" -->
-              # TCP/IP
-              The web is an application running on the Internet <br />
-              HTTP is an application protocol running on the TCP/IP stack
+                <!-- .slide: class="center noborderimages" -->
+                * Client / server architecture
+                * Request / Response
+                * Stateless, no session
+                * No built-in security
 
-              <img src="./images/TCP_IP.png" width="60%" alt="">
+                <img src="./images/request_response.png" width="60%" alt="">
 
-            </script>
-          </section>
+            </section>
 
-          <section data-markdown>
-            <script type="text/template">
-              <!-- .slide: class="center noborderimages" -->
-              * Client / server architecture
-              * Request / Response
-              * Stateless, no session
-              * No built-in security
+            <section data-markdown>
+              <script type="text/template">
+                * HTTP 0.9 (1991)
+                * HTTP 1.0 (1996)
+                * HTTP 1.1 (1997)
+                * HTTP 2 (May 2015)
+              </script>
+            </section>
+        </section>
 
-              <img src="./images/request_response.png" width="60%" alt="">
-
-            </script>
-          </section>
+        <section>
 
           <section data-markdown>
             <script type="text/template">
-              <img src="./images/web1.png" width="90%" alt="">
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
-              * HTTP 0.9 (1991)
-              * HTTP 1.0 (1996)
-              * HTTP 1.1 (1997)
-              * HTTP/2 (May 2015)
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
-              Client to Server
-              HTTP Methods, HTTP verbs
-
-              GET, POST
-
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
-              Client to Server
-              <img src="./images/http_request.png" alt="">
-
-              Server to client
-              <img src="./images/http_reponse.png" alt="">
-
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
-              # In what format will data be send?
-              Accept
-              Content-Type
-              Compression
-
-              Content-Type
-              Compression
-
-              Mime-type
-              text/html
-              application/xhtml+xml
-              application/json, application/xml
+              ### HTTP Methods (verbs) - Client to server
+              * GET - Get data; search result (safe and idempotent)
+              * POST - Create data (unsafe, not idempotent)
+              * PUT - Update data, if resource not exist, create (unsafe, idempotent)
+              * PATCH - Partial update of resource (unsafe, not idempotent)
+              * DELETE - Delete a resource (unsafe, idempotent)
+              * HEAD - Just get headers (safe, idempotent)
+              * OPTIONS - Check what the server can do (CORS)
 
             </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              # Identification
-              User-Agent
-              Athorization
+              ## Status codes - Server to client
+              * 1xx - Informational
+                * 101 Switching Protocols
+              * 2xx - Successful
+                * 200 OK, 201 Created
+              * 3xx - Redirection
+                * 302 Found
+              * 4xx - Client Error
+                * 400 Bad request, 401 Unauthorized
+              * 5xx - Server errror
+                * 500 Internal Server Error
+
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              Client to Server<br />
+              <img src="./images/http_request.png"  width="100%" alt="">
+
+              Server to client<br />
+              <img src="./images/http_response.png"   width="50%" alt="">
+
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### In what format will data be send?
+              Client to Server (Accept, Accept-encoding)<br />
+              <img src="./images/http_request.png"  width="60%" alt="">
+
+              Server to client (Content-Type, Content-Encoding)<br />
+              <img src="./images/http_response.png"   width="50%" alt="">
+              <br />The server should use gzip on text files > 2 Kb
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### Client to server, identification headers
+              * User-Agent
+                * Identifing the client (do not trust)
+                * Web spiders - Filter out in logging
+              * Authorization
+                * HTTP built in authentication
+                * Sending tokens to API
+
               ----
-              Server
-
-
+              ### Server to client, identification headers
+              * Server
+                * Identifing the server (do not trust)
+                * Fool the scriptkiddies
 
             </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              # If HTTP is stateless how does the server know that a user is logged in?
+              <!-- .slide: class="center noborderimages" -->
+              ### If HTTP is stateless how does the server know that a user is logged in?
 
-
-              Cookie
-
-              ----
-
-              Set-Cookie
-
-              An HTTP cookie is a token or short packet of state information that the HTTP agent and the target server can exchange to maintain a session.
-              In its simplest form an HTTP cookie is merely a name / value pair. Usually an HTTP cookie also contains a number of attributes such a domain for which is valid, a path that specifies the subset of URLs on the origin server to which this cookie applies, and the maximum period of time for which the cookie is valid.
+              <img src="./images/request_response.png" width="50%" alt="" />
 
             </script>
+          </section>
+
+          <section>
+              <script type="text/template">
+
+                          Cookie
+
+                          ----
+
+                          Set-Cookie
+
+                          An HTTP cookie is a token or short packet of state information that the HTTP agent and the target server can exchange to maintain a session.
+                          In its simplest form an HTTP cookie is merely a name / value pair. Usually an HTTP cookie also contains a number of attributes such a domain for which is valid, a path that specifies the subset of URLs on the origin server to which this cookie applies, and the maximum period of time for which the cookie is valid.
+                <script type="text/template">
+
+
           </section>
 
           <section data-markdown>
@@ -259,6 +311,9 @@
 
             </script>
           </section>
+
+
+        </section>
 
           <section data-markdown>
             <script type="text/template">
