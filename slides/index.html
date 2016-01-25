@@ -114,8 +114,8 @@
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
               # TCP/IP
-              Webben är en applikation som körs på Internet <br />
-              HTTP är ett applikationsprotokoll på TCP/IP-stacken
+              The web is an application running on the Internet <br />
+              HTTP is an application protocol running on the TCP/IP stack
 
               <img src="./images/TCP_IP.png" width="60%" alt="">
 
@@ -181,7 +181,7 @@
               Content-Type
               Compression
 
-              Mime
+              Mime-type
               text/html
               application/xhtml+xml
               application/json, application/xml
@@ -197,18 +197,15 @@
               ----
               Server
 
-              Mime
-              text/html
-              application/xhtml+xml
-              application/json, application/xml
+
 
             </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              # Make a state
-              Keep a session on the server
+              # If HTTP is stateless how does the server know that a user is logged in?
+
 
               Cookie
 
@@ -231,6 +228,20 @@
               ----
 
               Expires
+              Cache-Control
+              ETag
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              # Cache
+
+              Cache-Control: max-age=0, no-cache, no-store
+              If-None-Match
+              ----
+
+
               Cache-Control
               ETag
 
@@ -257,7 +268,7 @@
 
           <section data-markdown>
             <script type="text/template">
-              # Performance
+              # Performance!
               <img src="./images/latency_http2.png" alt="">
             </script>
           </section>
@@ -272,7 +283,7 @@
           <section data-markdown>
             <script type="text/template">
               # So whats new?
-              * Demultiplexing - one connection for many request
+              * Demultiplexing - one connection for many request, data streams
               * Server push (not as in Web Sockets)
               * Header Compression
               * ...
