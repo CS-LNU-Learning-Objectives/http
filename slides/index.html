@@ -149,7 +149,7 @@
             </section>
 
             <section data-markdown>
-
+              <script type="text/template">
                 <!-- .slide: class="center noborderimages" -->
                 * Client / server architecture
                 * Request / Response
@@ -157,7 +157,7 @@
                 * No built-in security
 
                 <img src="./images/request_response.png" width="60%" alt="">
-
+              </script>
             </section>
 
             <section data-markdown>
@@ -174,14 +174,18 @@
 
           <section data-markdown>
             <script type="text/template">
-              ### HTTP Methods (verbs) - Client to server
-              * GET - Get data; search result (safe and idempotent)
-              * POST - Create data (unsafe, not idempotent)
-              * PUT - Update data, if resource not exist, create (unsafe, idempotent)
-              * PATCH - Partial update of resource (unsafe, not idempotent)
-              * DELETE - Delete a resource (unsafe, idempotent)
-              * HEAD - Just get headers (safe, idempotent)
-              * OPTIONS - Check what the server can do (CORS)
+              ### HTTP Methods (verbs)
+              *From Client to Server*
+
+              | *Verbs*        | *Actions*           |   |
+              | ------------- |-------------| -----:|
+              |GET | Get data; search result | safe and idempotent
+              |POST | Create data |unsafe, not idempotent|
+              |PUT |Update data|unsafe, idempotent|
+              |PATCH | Partial update of resource |unsafe, not idempotent|
+              |DELETE | Delete a resource |unsafe, idempotent|
+              |HEAD | Just get headers |safe, idempotent|
+              |OPTIONS | Check what the server can do |CORS|
 
             </script>
           </section>
@@ -206,41 +210,44 @@
           <section data-markdown>
             <script type="text/template">
               Client to Server<br />
-              <img src="./images/http_request.png"  width="100%" alt="">
-
-              Server to client<br />
-              <img src="./images/http_response.png"   width="50%" alt="">
-
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
-              ### In what format will data be send?
-              Client to Server (Accept, Accept-encoding)<br />
               <img src="./images/http_request.png"  width="60%" alt="">
 
-              Server to client (Content-Type, Content-Encoding)<br />
-              <img src="./images/http_response.png"   width="50%" alt="">
-              <br />The server should use gzip on text files > 2 Kb
+              Server to client<br />
+              <img src="./images/http_response.png"   width="40%" alt="">
+
             </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              ### Client to server, identification headers
+              ### In what format will data be sent?
+              Client to Server (Accept, Accept-encoding)<br />
+              <img src="./images/http_accept.png"  width="55%" alt="">
+
+              ----
+
+              Server to client (Content-Type, Content-Encoding)<br />
+              <img src="./images/http_content.png"   width="40%" alt="">
+              * MIME type (text/html, application/json)
+              * The server should use gzip on text files > 2 Kb
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### Client to server - identification headers
               * User-Agent
                 * Identifing the client (do not trust)
-                * Web spiders - Filter out in logging
+                * Web spiders - Filter out in logs
               * Authorization
                 * HTTP built in authentication
                 * Sending tokens to API
 
               ----
-              ### Server to client, identification headers
+              ### Server to client - identification headers
               * Server
                 * Identifing the server (do not trust)
-                * Fool the scriptkiddies
+                * Fool the scriptkiddies!
 
             </script>
           </section>
@@ -255,53 +262,49 @@
             </script>
           </section>
 
-          <section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Web server session
+            In order to associate a request to any other request, you need a way to store user data between HTTP requests.
+            * The user send the state information with every request
+              * http://www.example.com?id=1023&username=thajo
+              * Cookie with all the data
+
+            * Let the user send a "secret" id and let the server store the session data
+              * http://www.example.com?id=sdhjH223Hsjhdj2jasdlj
+              * Session cookie - encrypted or a hash
+              * A by the server signed token (JSON Web Token)
+            </script>
+          </section>
+
+          <section data-markdown>
               <script type="text/template">
+                ## In the request
+                * Cookie
+                  * PHPSESSID=1p0sptqdupf47lefnti1j1fg40
 
-                          Cookie
-
-                          ----
-
-                          Set-Cookie
-
-                          An HTTP cookie is a token or short packet of state information that the HTTP agent and the target server can exchange to maintain a session.
-                          In its simplest form an HTTP cookie is merely a name / value pair. Usually an HTTP cookie also contains a number of attributes such a domain for which is valid, a path that specifies the subset of URLs on the origin server to which this cookie applies, and the maximum period of time for which the cookie is valid.
-                <script type="text/template">
-
-
+                ## In the response
+                * Set-Cookie
+                  * PHPSESSID=1p0sptqdupf47lefnti1j1fg40 Path=/
+              </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              # Cache
+              ## Cache
+              The ability to temporary store resources like HTML, images, css, script
+              closer to the client to reduce traffic
 
-              If-Modified-Since
-
-              ----
-
-              Expires
-              Cache-Control
-              ETag
+              * Expires
+                * Using a HTTP Date to tell how long to cache
+              * Cache-Control
+                * More abilities to set cache; age, public/private
+              * ETag
+                * A id calculated by the server to check against
             </script>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-              # Cache
 
-              Cache-Control: max-age=0, no-cache, no-store
-              If-None-Match
-              ----
-
-
-              Cache-Control
-              ETag
-
-              An HTTP cookie is a token or short packet of state information that the HTTP agent and the target server can exchange to maintain a session.
-              In its simplest form an HTTP cookie is merely a name / value pair. Usually an HTTP cookie also contains a number of attributes such a domain for which is valid, a path that specifies the subset of URLs on the origin server to which this cookie applies, and the maximum period of time for which the cookie is valid.
-
-            </script>
-          </section>
 
           <section data-markdown>
             <script type="text/template">
@@ -312,27 +315,48 @@
             </script>
           </section>
 
-
-        </section>
-
           <section data-markdown>
             <script type="text/template">
-              # Why do we need HTTP/2?
+              # Cache-Control
+
+              <img src="./images/cache-control-example.png" alt="">
+
             </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
+            <!-- .slide: class="center noborderimages" -->
+            ## It is old but it works great!
+            ![traffic](images/traffic.png)
+            </script>
+          </section>
+
+
+        </section>
+
+
+        <section>
+
+          <section data-markdown>
+            <script type="text/template">
+              <!-- .slide: class="center noborderimages" -->
+              # Why do we need HTTP/2?
+
+              ![thinking](http://www.reactiongifs.com/r/ewis1.gif)
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              <!-- .slide: class="center noborderimages" -->
               # Performance!
               <img src="./images/latency_http2.png" alt="">
             </script>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-
-              <img src="./images/pipeline.png" alt="">
-            </script>
+          <section class="center">
+              <img src="./images/pipeline.png" alt="" />
           </section>
 
           <section data-markdown>
@@ -349,19 +373,24 @@
 
           <section data-markdown>
             <script type="text/template">
-              # What does this means for web developers?
-
-            </script>
-          </section>
-
-          <section data-markdown>
-            <script type="text/template">
+              ## What does this means for web developers?
               * HTTP Methods, Response all the same!
               * Don´t need to concat static files!
                 * Becomes an anti-pattern!
 
             </script>
           </section>
+
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            <!-- .slide: class="center noborderimages" -->
+            ## So...is it time to start coding?
+            ![intresst](http://www.reactiongifs.com/r/otmm.gif)
+
+          </script>
+        </section>
 
         </div>
     </div>
