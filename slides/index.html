@@ -114,17 +114,24 @@
                 </p>
             </section>
 
+            <section class="center">
+              <h3>CERN httpd</h3>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/First_Web_Server.jpg" width="80%" alt="">
+              <p class="cc"><a title="Coolcaesar at the English language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AFirst_Web_Server.jpg"></a></p>
+            </section>
+
             <section data-markdown>
               <script type="text/template">
                 <img src="./images/web1.png" width="90%" alt="">
               </script>
             </section>
 
-            <section class="center">
-              <h3>CERN httpd</h3>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/First_Web_Server.jpg" width="80%" alt="">
-              <p class="cc"><a title="Coolcaesar at the English language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AFirst_Web_Server.jpg"></a></p>
+            <section data-markdown class="center">
+              <script type="text/template">
+                <img src="./images/waeving.jpg" width="40%" alt="">
+              </script>
             </section>
+
           </section>
 
 
@@ -179,9 +186,9 @@
 
               | *Verbs*        | *Actions*           |   |
               | ------------- |-------------| -----:|
-              |GET | Get data; search result | safe and idempotent
+              |GET | Get data; search result | safe, idempotent
               |POST | Create data |unsafe, not idempotent|
-              |PUT |Update data|unsafe, idempotent|
+              |PUT | Update data |unsafe, idempotent|
               |PATCH | Partial update of resource |unsafe, not idempotent|
               |DELETE | Delete a resource |unsafe, idempotent|
               |HEAD | Just get headers |safe, idempotent|
@@ -196,12 +203,12 @@
               * 1xx - Informational
                 * 101 Switching Protocols
               * 2xx - Successful
-                * 200 OK, 201 Created
+                * 200 OK, 201 Created, 204 No Data
               * 3xx - Redirection
-                * 302 Found
+                * 302 Found (follow "Location"), 304 Not Modified
               * 4xx - Client Error
                 * 400 Bad request, 401 Unauthorized
-              * 5xx - Server errror
+              * 5xx - Server Error
                 * 500 Internal Server Error
 
             </script>
@@ -210,11 +217,11 @@
           <section data-markdown>
             <script type="text/template">
               Client to Server<br />
-              <img src="./images/http_request.png"  width="60%" alt="">
+              <img src="./images/http_request.png"  width="65%" alt="">
 
               Server to client<br />
               <img src="./images/http_response.png"   width="40%" alt="">
-
+              * Custom headers?
             </script>
           </section>
 
@@ -235,7 +242,7 @@
 
           <section data-markdown>
             <script type="text/template">
-              ### Client to server - identification headers
+              ### Client to server
               * User-Agent
                 * Identifing the client (do not trust)
                 * Web spiders - Filter out in logs
@@ -244,7 +251,7 @@
                 * Sending tokens to API
 
               ----
-              ### Server to client - identification headers
+              ### Server to client
               * Server
                 * Identifing the server (do not trust)
                 * Fool the scriptkiddies!
@@ -262,30 +269,39 @@
             </script>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-            ## Web server session
-            In order to associate a request to any other request, you need a way to store user data between HTTP requests.
-            * The user send the state information with every request
-              * http://www.example.com?id=1023&username=thajo
-              * Cookie with all the data
+          <section>
+            <h2>Web server session</h2>
+            <p>
+              In order to associate a request to any other request, you need a way to store user data between HTTP requests.
+            </p>
+            <ul>
+              <li> The user send the state information with every request</li>
 
-            * Let the user send a "secret" id and let the server store the session data
-              * http://www.example.com?id=sdhjH223Hsjhdj2jasdlj
-              * Session cookie - encrypted or a hash
-              * A by the server signed token (JSON Web Token)
+                <ul>
+                  <li>http://www.example.com?id=1023&username=thajo</li>
+                  <li>Cookie with all the data</li>
+                </ul>
+              <li> Let the user send a "secret" id and let the server store the session data</li>
+
+                <ul>
+                  <li>http://www.example.com?id=sdhjH223Hsjhdj2jasdlj</li>
+                  <li>Session cookie - encrypted or a hash</li>
+                  <li>A by the server signed token (JSON Web Token)</li>
+                </ul>
+            </ul>
+
             </script>
           </section>
 
           <section data-markdown>
               <script type="text/template">
-                ## In the request
+                ### In the response
+                * Set-Cookie
+                  * PHPSESSID=1p0sptqdupf47lefnti1j1fg40 Path=/admin
+
+                ### In the request
                 * Cookie
                   * PHPSESSID=1p0sptqdupf47lefnti1j1fg40
-
-                ## In the response
-                * Set-Cookie
-                  * PHPSESSID=1p0sptqdupf47lefnti1j1fg40 Path=/
               </script>
           </section>
 
@@ -296,11 +312,14 @@
               closer to the client to reduce traffic
 
               * Expires
-                * Using a HTTP Date to tell how long to cache
+                * Using a HTTP Date to tell client how long to cache
+                * expires:Wed, 27 Jan 2016 06:44:00 GMT
               * Cache-Control
                 * More abilities to set cache; age, public/private
+                * cache-control: public, max-age=86400
+                * cache-control: private, max-age=0, no-cache
               * ETag
-                * A id calculated by the server to check against
+                * An id calculated by the server to check against
             </script>
           </section>
 
@@ -319,18 +338,12 @@
             <script type="text/template">
               # Cache-Control
 
-              <img src="./images/cache-control-example.png" alt="">
+              <img src="./images/cache-control-example.png" width="80%" alt="">
 
             </script>
           </section>
 
-          <section data-markdown>
-            <script type="text/template">
-            <!-- .slide: class="center noborderimages" -->
-            ## It is old but it works great!
-            ![traffic](images/traffic.png)
-            </script>
-          </section>
+
 
 
         </section>
@@ -338,11 +351,30 @@
 
         <section>
 
+          <section class="center">
+              <h2>Requests and TCP connections</h2>
+              <img src="./images/pipeline.png" alt="" />
+              <br />
+              <ul>
+                <li>Keep-Alive, Pipeline (HTTP 1.1)</li>
+              </ul>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+            <!-- .slide: class="center noborderimages" -->
+            ## HTTP is old but it works great!!?
+
+            <br /><br />
+            ![traffic](images/traffic.png)
+            </script>
+          </section>
+
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
-              # Why do we need HTTP/2?
-
+              ## So why do we need HTTP/2?
+              More bandwidth will speed things up!<br />  <br /><br />
               ![thinking](http://www.reactiongifs.com/r/ewis1.gif)
             </script>
           </section>
@@ -350,22 +382,30 @@
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
-              # Performance!
+              ## Latency!
               <img src="./images/latency_http2.png" alt="">
             </script>
           </section>
 
-          <section class="center">
-              <img src="./images/pipeline.png" alt="" />
+          <section data-markdown>
+            <script type="text/template">
+              ### HTTP/2
+              * Based on SPDY (Google)
+              * Internet Engineering Task Force (IETF)
+              * Supported by most browsers and servers
+              * May 14, 2015, Proposed standard [RFC 7540](https://tools.ietf.org/html/rfc7540)
+
+            </script>
           </section>
 
           <section data-markdown>
             <script type="text/template">
-              # So whats new?
-              * Demultiplexing - one connection for many request, data streams
+              ### So whats new in HTTP/2?
+              * Multiplexing - one single TCP connection for many request
               * Server push (not as in Web Sockets)
-              * Header Compression
-              * ...
+              * Data Compression of HTTP Headers
+              * Binary data streams
+              * Priority flags
 
               Ilya Grigorik - https://www.youtube.com/watch?v=yURLTwZ3ehk
             </script>
@@ -373,10 +413,10 @@
 
           <section data-markdown>
             <script type="text/template">
-              ## What does this means for web developers?
-              * HTTP Methods, Response all the same!
+              ### What does this means for web developers?
+              * HTTP Methods, Response codes, headers...all the same!
               * Don´t need to concat static files!
-                * Becomes an anti-pattern!
+                * Becomes an anti-pattern (caching)
 
             </script>
           </section>
@@ -386,7 +426,7 @@
         <section data-markdown>
           <script type="text/template">
             <!-- .slide: class="center noborderimages" -->
-            ## So...is it time to start coding?
+            ### So...is it time to start some coding?
             ![intresst](http://www.reactiongifs.com/r/otmm.gif)
 
           </script>
