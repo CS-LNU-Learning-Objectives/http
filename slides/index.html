@@ -108,11 +108,7 @@
               </script>
             </section>
 
-            <section>
-                <p class="center">
-                  <img  src="http://orion.lnu.se/pub/education/course/1DV449/ht15/sessions/images/http_url_html.png" alt="" width="70%">
-                </p>
-            </section>
+
 
             <section class="center">
               <h3>CERN httpd</h3>
@@ -124,6 +120,12 @@
               <script type="text/template">
                 <img src="./images/web1.png" width="90%" alt="">
               </script>
+            </section>
+
+            <section>
+                <p class="center">
+                  <img  src="http://orion.lnu.se/pub/education/course/1DV449/ht15/sessions/images/http_url_html.png" alt="" width="70%">
+                </p>
             </section>
 
             <section data-markdown class="center">
@@ -221,6 +223,7 @@
 
               Server to client<br />
               <img src="./images/http_response.png"   width="40%" alt="">
+              * https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
               * Custom headers?
             </script>
           </section>
@@ -245,7 +248,7 @@
               ### Client to server
               * User-Agent
                 * Identifing the client (do not trust)
-                * Web spiders - Filter out in logs
+                * Web spiders/crawlers - Filter out in logs
               * Authorization
                 * HTTP built in authentication
                 * Sending tokens to API
@@ -272,10 +275,10 @@
           <section>
             <h2>Web server session</h2>
             <p>
-              In order to associate a request to any other request, you need a way to store user data between HTTP requests.
+              In order to associate a request to any other request, you need a way to store user data between HTTP/HTTPS requests.
             </p>
             <ul>
-              <li> The user send the state information with every request</li>
+              <li> The user send the state information with every request (state on client)</li>
 
                 <ul>
                   <li>http://www.example.com?id=1023&username=thajo</li>
@@ -286,7 +289,7 @@
                 <ul>
                   <li>http://www.example.com?id=sdhjH223Hsjhdj2jasdlj</li>
                   <li>Session cookie - encrypted or a hash</li>
-                  <li>A by the server signed token (JSON Web Token)</li>
+                  <li>A by the server(s) signed token (JSON Web Token)</li>
                 </ul>
             </ul>
 
@@ -315,7 +318,7 @@
                 * Using a HTTP Date to tell client how long to cache
                 * expires:Wed, 27 Jan 2016 06:44:00 GMT
               * Cache-Control
-                * More abilities to set cache; age, public/private
+                * More abilities to set cache; max-age (seconds), public/private
                 * cache-control: public, max-age=86400
                 * cache-control: private, max-age=0, no-cache
               * ETag
@@ -363,7 +366,7 @@
           <section data-markdown>
             <script type="text/template">
             <!-- .slide: class="center noborderimages" -->
-            ## HTTP is old but it works great!!?
+            ## HTTP 1.1 is old but it works great!!?
 
             <br /><br />
             ![traffic](images/traffic.png)
@@ -373,8 +376,8 @@
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
-              ## So why do we need HTTP/2?
-              More bandwidth will speed things up!<br />  <br /><br />
+              ## More bandwidth will speed things up!
+              So why do we need HTTP/2?<br />  <br /><br />
               ![thinking](http://www.reactiongifs.com/r/ewis1.gif)
             </script>
           </section>
@@ -392,8 +395,8 @@
               ### HTTP/2
               * Based on SPDY (Google)
               * Internet Engineering Task Force (IETF)
-              * Supported by most browsers and servers
-              * May 14, 2015, Proposed standard [RFC 7540](https://tools.ietf.org/html/rfc7540)
+              * Supported by most modern browsers and servers
+              * May 14, 2015, [RFC 7540](https://tools.ietf.org/html/rfc7540)
 
             </script>
           </section>
