@@ -5,7 +5,7 @@ HTTP is the protocol that clients and servers is using to understand the request
 
 In the underlaying layers of the Internet model we find protocols like IP (Internet protocol), TCP (Transmission Control Protocol) and DNS (Domain Name System). Through IP servers and clients can find and address each other. Through TCP they can connect and uphold a connection to each other. Through the DNS we can map domain names like www.lnu.se to ip-numbers as 194.47.110.233.
 
-All this protocols är working together in different layers with HTTP on top to make HTTP requests and responses. Below is a image of the so called TCP/IP-modell that illustrates this.
+All these protocols are working together in different layers with HTTP on top to make HTTP requests and responses. Below is a image of the so called TCP/IP-modell that illustrates this.
 
 ![TCP/IP Model](img/TCP_IP.png)
 
@@ -19,7 +19,7 @@ This is a old version that is not in the use these days. It only support GET req
 These versions are still relevant today. Most of the HTTP traffic today is using the HTTP 1.1 version. Some features has been added and updated through the version here are some of them:
 
 ### The HTTP request
-As you know the web is build through the server-client model, where the client sends request to the server that answers with responses. The part that sends the response is always the client. The HTTP protocol is used to get clients and servers to understand each other. This is done by sending text messages to each other that contains so called HTTP headers. A HTTP header is like a key-value pair that is specified in the specification and tells the other part what to do. Let´s see an example of a client request:
+As you know the web is build through the server-client model, where the client sends requests to the server that answers with responses. The part that sends the response is always the client. The HTTP protocol is used to get clients and servers to understand each other. This is done by sending text messages to each other that contains so called HTTP headers. A HTTP header is like a key-value pair that is specified in the specification and tells the other part what to do. Let´s see an example of a client request:
 
 ```
 GET / HTTP 1.1
@@ -48,7 +48,7 @@ The third row ("Accept") is a common header for a request where the client tells
 
 The forth row; User-Agent is a header that tells the server what kind of client that is making the request. In this case the request is from a web browser, Chrome on Mac. This header is not only used by browsers but also any kinds of clients as for example search engine spiders or web scrapers.
 
-"Accept-Encoding" tells the server that the client has support for these three coding formats; gzip, deflate and sdch. These are compressing formats that allow the server to compress the data (the HTML document) it will send back. This is a feature that påtimize the amount of data that is send between the server and the client.
+"Accept-Encoding" tells the server that the client has support for these three coding formats; gzip, deflate and sdch. These are compressing formats that allow the server to compress the data (the HTML document) it will send back. This is a feature that optimize the amount of data that is send between the server and the client.
 
 The last one in this example is the Cookie-header. A cookie is a way for the client (most times the web browser) to save information from the server and send along with every request. This is often used when a client has logged in to a web system and the server must know this state. The problem with this scenario is that HTTP and the web is stateless. That means that in its nature the web server get an request, do its thing, send the response and then disconnect the client and forget about the request. How should the server then know if a request is from a authenticated client? One common solution to this in web applications is using cookie, that identifies the client.
 
@@ -57,7 +57,7 @@ The last one in this example is the Cookie-header. A cookie is a way for the cli
 When the client sends a request with a HTTP method the server should answer with a status code that tells the client how the request went. This is done by a three digit number. There are five different groups of Status Codes:
 
 * The 100-series
-This status codes has to do with information the server is sending to client. The client should read it as "OK i got your request and is processing it". A common use is when a client is trying to make a Web Socket connection and the server answer with "101 Switching protocols".
+This status codes has to do with information the server is sending to client. The client should read it as "OK I got your request and is processing it". A common use is when a client is trying to make a Web Socket connection and the server answer with "101 Switching protocols".
 
 * The 200-series
 Every status code in this is some kind of "success" telling the client that the request went well. The most common is "200 OK" or the "201 Created"
